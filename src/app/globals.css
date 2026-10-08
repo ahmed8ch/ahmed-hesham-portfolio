@@ -1,21 +1,25 @@
 @import "tailwindcss";
 @import "@fontsource-variable/inter";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #f8fafc;
   --surface: #ffffff;
   --surface-hover: #f1f5f9;
   --surface-muted: #f1f5f9;
-  --foreground: #0f172a;
-  --foreground-secondary: #334155;
-  --muted: #64748b;
+  --surface-pill: #f1f5f9;
+  --foreground: #09090b;
+  --foreground-secondary: #1e293b;
+  --muted: #475569;
   --border: #e2e8f0;
   --border-strong: #cbd5e1;
   --accent: #7c3aed;
   --accent-light: #8b5cf6;
+  --accent-subtle: #f5f3ff;
+  --accent-text: #6d28d9;
   --accent-glow: rgba(124, 58, 237, 0.15);
-  --success: #059669;
-  --card-glow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  --card-glow: 0 2px 8px -1px rgba(0, 0, 0, 0.06);
 }
 
 .dark {
@@ -23,15 +27,17 @@
   --surface: #12131d;
   --surface-hover: #181926;
   --surface-muted: #1a1c2b;
+  --surface-pill: #1f2030;
   --foreground: #ffffff;
-  --foreground-secondary: #e2e8f0;
+  --foreground-secondary: #f1f5f9;
   --muted: #94a3b8;
   --border: rgba(255, 255, 255, 0.09);
   --border-strong: rgba(255, 255, 255, 0.18);
   --accent: #a855f7;
   --accent-light: #c084fc;
+  --accent-subtle: rgba(168, 85, 247, 0.15);
+  --accent-text: #e9d5ff;
   --accent-glow: rgba(168, 85, 247, 0.25);
-  --success: #10b981;
   --card-glow: 0 8px 32px -4px rgba(0, 0, 0, 0.5);
 }
 
@@ -53,11 +59,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* High-Contrast Bento Card Styling */
+/* Explicit Bento Card System */
 .bento-card {
   background-color: var(--surface);
   border: 1px solid var(--border);
   box-shadow: var(--card-glow);
+  color: var(--foreground);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -67,21 +74,27 @@ body {
 }
 
 .bento-card-glow:hover {
-  border-color: rgba(168, 85, 247, 0.4);
+  border-color: var(--accent);
   box-shadow: 0 0 25px -5px var(--accent-glow);
 }
 
-/* Crisp Text Utilities */
-.text-high-contrast {
-  color: var(--foreground);
+/* Guaranteed High-Contrast Typography */
+.text-heading {
+  color: var(--foreground) !important;
 }
 
-.text-secondary-contrast {
-  color: var(--foreground-secondary);
+.text-body-primary {
+  color: var(--foreground-secondary) !important;
 }
 
-.text-muted-contrast {
-  color: var(--muted);
+.text-body-muted {
+  color: var(--muted) !important;
+}
+
+.badge-accent {
+  background-color: var(--accent-subtle) !important;
+  color: var(--accent-text) !important;
+  border-color: var(--accent) !important;
 }
 
 /* Tabular numbers */
@@ -128,7 +141,7 @@ body {
     break-inside: avoid;
   }
 
-  h1, h2, h3, h4, p, span, div {
+  h1, h2, h3, h4, p, span, div, strong {
     color: #000000 !important;
   }
 
