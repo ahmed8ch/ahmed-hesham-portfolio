@@ -1,0 +1,139 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+:root {
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --surface-hover: #f1f5f9;
+  --surface-muted: #f1f5f9;
+  --foreground: #0f172a;
+  --foreground-secondary: #334155;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --accent: #7c3aed;
+  --accent-light: #8b5cf6;
+  --accent-glow: rgba(124, 58, 237, 0.15);
+  --success: #059669;
+  --card-glow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+.dark {
+  --background: #090a10;
+  --surface: #12131d;
+  --surface-hover: #181926;
+  --surface-muted: #1a1c2b;
+  --foreground: #ffffff;
+  --foreground-secondary: #e2e8f0;
+  --muted: #94a3b8;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --accent: #a855f7;
+  --accent-light: #c084fc;
+  --accent-glow: rgba(168, 85, 247, 0.25);
+  --success: #10b981;
+  --card-glow: 0 8px 32px -4px rgba(0, 0, 0, 0.5);
+}
+
+html {
+  font-family: 'Inter Variable', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  background-color: var(--background);
+  color: var(--foreground);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* High-Contrast Bento Card Styling */
+.bento-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--card-glow);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card:hover {
+  border-color: var(--border-strong);
+  background-color: var(--surface-hover);
+}
+
+.bento-card-glow:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 25px -5px var(--accent-glow);
+}
+
+/* Crisp Text Utilities */
+.text-high-contrast {
+  color: var(--foreground);
+}
+
+.text-secondary-contrast {
+  color: var(--foreground-secondary);
+}
+
+.text-muted-contrast {
+  color: var(--muted);
+}
+
+/* Tabular numbers */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Diagnostic Wireframe Mode */
+.diagnostic-active * {
+  outline: 1px solid rgba(168, 85, 247, 0.5) !important;
+  outline-offset: -1px;
+}
+
+/* Print Parity */
+@media print {
+  @page {
+    margin: 12mm 15mm 12mm 15mm;
+    size: A4 portrait;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 10pt !important;
+  }
+
+  .no-print,
+  #ambient-canvas,
+  #telemetry-bar,
+  #diagnostic-badge,
+  .print-hide {
+    display: none !important;
+  }
+
+  .print-expand {
+    display: block !important;
+  }
+
+  .bento-card {
+    background: transparent !important;
+    border: 1px solid #d1d5db !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  h1, h2, h3, h4, p, span, div {
+    color: #000000 !important;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: underline !important;
+  }
+}
