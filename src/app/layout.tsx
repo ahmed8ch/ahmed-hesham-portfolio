@@ -30,8 +30,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
+    { media: "(prefers-color-scheme: light)", color: "#f1f5f9" },
+    { media: "(prefers-color-scheme: dark)", color: "#090a10" },
   ],
 };
 
@@ -42,7 +42,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className="min-h-screen bg-white text-zinc-900 antialiased selection:bg-zinc-800 selection:text-white dark:bg-zinc-950 dark:text-zinc-100 dark:selection:bg-zinc-200 dark:selection:text-zinc-900">
+      <body className="min-h-screen antialiased selection:bg-purple-600 selection:text-white">
         <KobraToastProvider>
           <AmbientTexture />
           {children}
